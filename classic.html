@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0f12">
+<title>第四面 · THE FOURTH FACE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════ 漫画过场 ══════════════ -->
+<div id="comic" class="comic" role="dialog" aria-label="漫画过场">
+  <div class="comic-rail" id="comic-rail"></div>
+  <div class="comic-hud">
+    <span id="comic-page">01 / 05</span>
+    <button id="comic-skip">跳过过场 ↦</button>
+  </div>
+  <div class="comic-next" id="comic-next">点击继续 <b>→</b></div>
+</div>
+
+<!-- ══════════════ 游戏舞台 ══════════════ -->
+<div id="stage" class="stage">
+  <canvas id="game"></canvas>
+
+  <!-- 由 canvas 绘制，这里是 DOM 覆盖层 -->
+  <div class="hud">
+    <div class="hud-left">
+      <span class="hud-eyebrow" id="hud-eyebrow"></span>
+      <h1 id="level-title"></h1>
+    </div>
+    <div class="hud-right">
+      <button id="btn-mute" title="音效开关">♪</button>
+      <button id="btn-restart" title="重开">↺</button>
+    </div>
+  </div>
+
+  <!-- 先知信号带：它记得多少，一眼可见 -->
+  <div class="ribbon" id="ribbon">
+    <div class="ribbon-head">
+      <span class="glyph">◈</span>
+      <div>
+        <b id="oracle-name">未知信号</b>
+        <small id="oracle-mode">等待接触</small>
+      </div>
+    </div>
+    <div class="ribbon-body">
+      <div class="bar">
+        <span>信号强度 SIGNAL</span>
+        <div class="track"><i id="signal-fill"></i></div>
+      </div>
+      <div class="bar conf">
+        <span>先知自评 CONFIDENCE</span>
+        <div class="track"><i id="conf-fill"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 先知的话，浮在角色上方 -->
+  <div class="speech" id="speech" aria-live="polite"></div>
+
+  <!-- 操作提示 -->
+  <div class="controls" id="controls">
+    <kbd>A</kbd><kbd>D</kbd> 移动 <span class="sep">·</span> <kbd>W</kbd> / <kbd>空格</kbd> 跳 <span class="sep">·</span>
+    <kbd>E</kbd> 与先知确认 <span class="sep">·</span> <kbd>R</kbd> 重来
+  </div>
+
+  <!-- ══════════════ 章节结束：整屏结算 ══════════════ -->
+  <div class="outro" id="outro">
+    <div class="outro-scan"></div>
+    <div class="outro-wedge"></div>
+    <div class="outro-num" id="outro-no">01</div>
+
+    <div class="outro-frame">
+      <div class="outro-head">
+        <span class="outro-eyebrow">CHAPTER CLEARED</span>
+        <span class="outro-rule"></span>
+        <span class="outro-title-sm" id="outro-name"></span>
+      </div>
+
+      <div class="outro-main">
+        <div class="outro-stat" id="outro-stat"></div>
+        <h2 id="outro-title"></h2>
+        <p id="outro-body"></p>
+
+        <div class="outro-lesson">
+          <em>◈ 你身上多了一条经验</em>
+          <p class="rule" id="lesson-rule"></p>
+          <p class="why" id="lesson-why"></p>
+        </div>
+      </div>
+
+      <div class="outro-actions">
+        <button class="outro-btn go" id="btn-next"><span class="caret">▶</span>下一章</button>
+        <button class="outro-btn" id="btn-replay"><span class="caret">▶</span>重走这一段</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 启动 -->
+  <div class="cover" id="cover">
+    <div class="cover-inner">
+      <span class="eyebrow">◈ 十一课 · 交互式</span>
+      <h1>第四面</h1>
+      <p class="sub">THE FOURTH FACE</p>
+      <p class="desc">你跌进了世界的背面。<br>这里唯一愿意回答你的，是一位看不见你的先知。</p>
+      <button class="btn primary big" id="btn-start">进入 →</button>
+      <p class="hint">建议全屏 · 键盘操作</p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
